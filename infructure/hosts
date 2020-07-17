@@ -7,7 +7,7 @@
 192.168.1.3 Ansible_user=root
 [nginx]
 192.168.1.6 Ansible_user=root
-[allhost]
+[allhosts]
 192.168.1.6 Ansible_user=root
 192.168.1.4 Ansible_user=root
 192.168.1.7 Ansible_user=root
