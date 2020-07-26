@@ -1,0 +1,8 @@
+---
+- hosts: all
+  become: yes
+
+  tasks:
+
+  - name: install lm-sensors
+    apt: name=lm-sensors update_cache=yes
