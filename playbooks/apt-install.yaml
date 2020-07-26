@@ -5,4 +5,4 @@
   tasks:
 
   - name: install lm-sensors
-    apt: name=lm-sensors update_cache=yes
+    apt: name=mc update_cache=yes
