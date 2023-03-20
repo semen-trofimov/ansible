@@ -1,18 +1,18 @@
 ---
 - hosts: "all"
   become: true
+  vars:
+      username: cicdiser
+      password: 
+      appdir: /home/ansible/services
+      app: node-exporter
   tasks:
   - name: "clone git repo"
     git:
       repo: 'https://{{ username | urlencode }}:{{ password | urlencode }}@gitlab.coolclever.tech/devops/provisioning/services/{{ app }}.git'
-      dest: /home/ansible/services/{{ app }}
-    vars:
-      username: cicdiser
-      password: 
-      app: node-exporter
-
+      dest: "{{ appdir }}/{{ app }}"
   - name: "Login to DockerHub"
-    command: "docker login gitlab.coolclever.tech:5005 -u {{ docker_username }} -p {{ docker_password }}"
-    vars:
-      docker_username: cicdiser
-      docker_password: 
+    command: "docker login gitlab.coolclever.tech:5005 -u {{ username }} -p {{ password }}"
+
+  - name: "run docker compose"
+    ansible.builtin.command: docker compose -f {{ appdir }}/{{ app }}/docker-compose.yaml up -d
