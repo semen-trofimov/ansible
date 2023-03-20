@@ -1,0 +1,32 @@
+---
+- hosts: "all"
+  become: true
+  tasks:
+  - name: "install net-tools"
+    ansible.builtin.apt:
+      name: "net-tools"
+      state: "latest"
+      update_cache: true
+  - name: "install curl"
+    ansible.builtin.apt:
+      name: "curl"
+      state: "latest"
+      update_cache: true
+  - name: "install ca-certificates"
+    ansible.builtin.apt:
+      name: "ca-certificates"
+      state: "latest"
+      update_cache: true
+  - name: "install gnupg"
+    ansible.builtin.apt:
+      name: "gnupg"
+      state: "latest"
+      update_cache: true
+  - name: "copy"
+    ansible.builtin.copy:
+      src: "/home/ansible/inventories/"
+      dest: "/home/ansible/"
+  - name: Add Docker GPG apt Key
+    apt_key:
+      url: https://download.docker.com/linux/ubuntu/gpg
+      state: present
