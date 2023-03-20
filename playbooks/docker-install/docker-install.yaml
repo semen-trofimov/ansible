@@ -1,0 +1,9 @@
+---
+- hosts: "all"
+  become: true
+  tasks:
+    - name: "Check for file presence"
+      ansible.builtin.script: ./docker-install.sh
+      register: script_out
+    - name: "Add user Docker Group"
+      command: usermod -aG docker ansible
