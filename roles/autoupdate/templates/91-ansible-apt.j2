@@ -1,0 +1,5 @@
+APT::Periodic::Enable "1";
+{% if updates_enabled %}
+APT: Periodic::Update-Package-List "1";
+APT::Periodic::Unatended-Upgrade "1";
+

@@ -1,0 +1,4 @@
+autoupdate_enabled: true
+autoupdate_full: false
+autoupdate_reboot: false
+autoupdate_reboot_time: "03:00"
